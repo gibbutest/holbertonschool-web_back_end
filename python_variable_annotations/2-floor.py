@@ -5,5 +5,5 @@ import math
 
 
 def floor(n: float) -> int:
-    """ Add the numbers """
+    """ Get the int kronk! """
     return math.floor(n)
