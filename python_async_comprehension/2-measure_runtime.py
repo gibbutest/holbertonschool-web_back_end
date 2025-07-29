@@ -6,7 +6,7 @@ from time import time
 async_comprehension = __import__('1-async_comprehension').async_comprehension
 
 
-async def measure_time() -> float:
+async def measure_runtime() -> float:
     """ Measure the total runtime for 4 tasks """
     start_time = time()
 
