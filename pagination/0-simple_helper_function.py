@@ -2,6 +2,7 @@
 
 """ The module """
 
+
 def index_range(page, page_size):
     """ Returns a tuple of the starting and end indexes """
 
