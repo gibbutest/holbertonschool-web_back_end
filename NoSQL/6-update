@@ -1,0 +1,7 @@
+// Update item
+db.school.updateMany(
+  { name: 'Holberton school' },
+  {$set: {
+    address: '972 Mission street'
+  }}
+)
