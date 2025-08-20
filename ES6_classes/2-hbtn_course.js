@@ -1,5 +1,16 @@
 export default class HolbertonCourse {
   constructor(name, length, students) {
+    if (typeof name !== 'string') {
+      throw new TypeError('Name must be a string');
+    }
+    if (typeof length !== 'number') {
+      throw new TypeError('Length must be a number');
+    }
+    if (!Array.isArray(students)) {
+      throw new TypeError('Not an array');
+    }
+
+    // Use the setters instead of assigning directly to the priv vars
     this.name = name;
     this.length = length;
     this.students = students;
@@ -8,26 +19,33 @@ export default class HolbertonCourse {
   get name() {
     return this._name;
   }
-  set name(value) {
-    if (typeof value !== 'string') throw new TypeError('Name must be a string');
-    this._name = value;
+
+  set name(newName) {
+    if (typeof newName !== 'string') {
+      throw new TypeError('Name must be a string');
+    }
+    this._name = newName;
   }
 
   get length() {
     return this._length;
   }
-  set length(value) {
-    if (typeof value !== 'number') throw new TypeError('Length must be a number');
-    this._length = value;
+
+  set length(newLen) {
+    if (typeof newLen !== 'number') {
+      throw new TypeError('Length must be a number');
+    }
+    this._length = Number(newLen);
   }
 
   get students() {
     return this._students;
   }
-  set students(value) {
-    if (!Array.isArray(value) || (Array.isArray(value) && value.some((el) => typeof el !== 'string'))) {
-      throw new TypeError('students must be an array of strings');
+
+  set students(newStudents) {
+    if (!Array.isArray(newStudents)) {
+      throw new TypeError('Not an array');
     }
-    this._students = value;
+    this._students = newStudents;
   }
 }
