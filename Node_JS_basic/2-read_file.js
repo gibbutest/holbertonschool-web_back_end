@@ -26,9 +26,9 @@ function countStudents(path) {
     else fieldMap.set(field, [first]);
   });
 
-  fieldMap.entries().forEach(([field, students]) => {
+  for (const [field, students] of fieldMap.entries()) {
     console.log(`Number of students in ${field}: ${students.length}. List: ${students.join(', ')}`);
-  });
+  }
 }
 
 module.exports = countStudents;
