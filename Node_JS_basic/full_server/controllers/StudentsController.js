@@ -29,7 +29,10 @@ class StudentsController {
     const database = process.argv[2];
     const { major } = req.params;
 
-    if (major !== 'CS' && major !== 'SWE') res.status(500).end('Major parameter must be CS or SWE');
+    if (major !== 'CS' && major !== 'SWE') {
+      res.status(500).end('Major parameter must be CS or SWE');
+      return;
+    }
 
     try {
       const { data } = await readDatabase(database);
