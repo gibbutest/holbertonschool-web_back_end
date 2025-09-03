@@ -7,7 +7,6 @@ export default class StudentsController {
    */
   static async getAllStudents(req, res) {
     const database = process.argv[2];
-    res.setHeader('Content-Type', 'text/plain');
     try {
       const { total, data } = await readDatabase(database);
       let string = 'This is the list of our students\n';
@@ -29,7 +28,6 @@ export default class StudentsController {
    */
   static async getAllStudentsByMajor(req, res) {
     const database = process.argv[2];
-    res.setHeader('Content-Type', 'text/plain');
     const { major } = req.params;
 
     if (major !== 'CS' && major !== 'SWE') res.status(200).end('Major parameter must be CS or SWE');

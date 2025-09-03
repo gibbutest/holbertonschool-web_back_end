@@ -4,7 +4,6 @@ export default class AppController {
    * @param {import('express').Response} res
    */
   static getHomepage(req, res) {
-    res.writeHead(200, { 'content-type': 'text/plain' });
-    res.end('Hello Holberton School!');
+    res.status(200).send('Hello Holberton School!');
   }
 }
