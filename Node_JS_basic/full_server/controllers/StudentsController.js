@@ -10,7 +10,6 @@ export default class StudentsController {
     try {
       const { data } = await readDatabase(database);
       let string = 'This is the list of our students\n';
-      string += `Number of students`;
 
       Object.entries(data).forEach(([field, students]) => {
         string += `Number of students in ${field}: ${students.length}. List: ${students.join(', ')}\n`;
