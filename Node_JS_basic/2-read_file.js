@@ -13,8 +13,8 @@ function countStudents(path) {
 
   const csv = data
     .toString('utf-8')
-    .filter(line => line.trim() !== '')
     .split('\n')
+    .filter(line => line.trim() !== '')
     .slice(1);
 
   console.log(`Number of students: ${csv.length}`);
