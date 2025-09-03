@@ -24,7 +24,7 @@ const app = http.createServer(async (req, res) => {
       res.end(string);
     } catch (error) {
       res.statusCode = 500;
-      res.end(error.toString());
+      res.end('Cannot load the database');
     }
   } else {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
