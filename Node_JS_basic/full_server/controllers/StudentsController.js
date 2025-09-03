@@ -8,9 +8,9 @@ export default class StudentsController {
   static async getAllStudents(req, res) {
     const database = process.argv[2];
     try {
-      const { total, data } = await readDatabase(database);
+      const { data } = await readDatabase(database);
       let string = 'This is the list of our students\n';
-      string += `Number of students: ${total}\n`;
+      string += `Number of students`;
 
       Object.entries(data).forEach(([field, students]) => {
         string += `Number of students in ${field}: ${students.length}. List: ${students.join(', ')}\n`;
