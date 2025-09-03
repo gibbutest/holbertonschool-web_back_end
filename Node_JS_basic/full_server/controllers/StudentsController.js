@@ -1,13 +1,12 @@
 import { readDatabase } from '../utils';
 
-const database = process.argv[2];
-
 export default class StudentsController {
   /**
    * @param {import('express').Request} req
    * @param {import('express').Response} res
    */
   static async getAllStudents(req, res) {
+    const database = process.argv[2];
     res.setHeader('Content-Type', 'text/plain');
     try {
       const { total, data } = await readDatabase(database);
@@ -29,6 +28,7 @@ export default class StudentsController {
    * @param {import('express').Response} res
    */
   static async getAllStudentsByMajor(req, res) {
+    const database = process.argv[2];
     res.setHeader('Content-Type', 'text/plain');
     const { major } = req.params;
 
