@@ -20,7 +20,7 @@ export default class StudentsController {
 
       res.status(200).send(string);
     } catch (error) {
-      res.status(500).send(error.message);
+      res.status(200).send(error.message);
     }
   }
 
@@ -32,13 +32,13 @@ export default class StudentsController {
     res.setHeader('Content-Type', 'text/plain');
     const { major } = req.params;
 
-    if (major !== 'CS' && major !== 'SWE') res.status(500).end('Major parameter must be CS or SWE');
+    if (major !== 'CS' && major !== 'SWE') res.status(200).end('Major parameter must be CS or SWE');
 
     try {
       const { data } = await readDatabase(database);
-      res.status(200).end(`List: ${data[major].join(', ')}`);
+      res.status(200).send(`List: ${data[major].join(', ')}`);
     } catch (error) {
-      res.status(500).end(error.message);
+      res.status(200).send(error.message);
     }
   }
 }
