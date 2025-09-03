@@ -1,4 +1,4 @@
-export default class AppController {
+class AppController {
   /**
    * @param {import('express').Request} req
    * @param {import('express').Response} res
@@ -7,3 +7,5 @@ export default class AppController {
     res.status(200).send('Hello Holberton School!');
   }
 }
+
+export default AppController;

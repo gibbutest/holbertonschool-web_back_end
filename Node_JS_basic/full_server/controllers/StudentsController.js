@@ -1,6 +1,6 @@
 import { readDatabase } from '../utils';
 
-export default class StudentsController {
+class StudentsController {
   /**
    * @param {import('express').Request} req
    * @param {import('express').Response} res
@@ -39,3 +39,5 @@ export default class StudentsController {
     }
   }
 }
+
+export default StudentsController;
