@@ -10,10 +10,10 @@ const app = http.createServer(async (req, res) => {
     res.statusCode = 200;
     res.end('Hello Holberton School!');
   } else if (req.url === '/students') {
+    res.write('This is the list of our students\n');
     try {
       const { total, data } = await countStudents(database);
 
-      let string = 'This is the list of our students\n';
       string += `Number of students: ${total}\n`;
 
       Object.entries(data).forEach(([field, students]) => {
