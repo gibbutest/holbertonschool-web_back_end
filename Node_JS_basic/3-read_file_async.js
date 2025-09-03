@@ -9,7 +9,10 @@ async function countStudents(path) {
     throw new Error('Cannot load the database');
   }
 
-  const fieldMap = new Map();
+  /**
+   * @type {Record<string, string[]>}
+   */
+  const fieldsObj = {};
 
   const csv = data
     .toString('utf-8')
@@ -17,18 +20,24 @@ async function countStudents(path) {
     .filter((line) => line.trim() !== '')
     .slice(1);
 
-  console.log(`Number of students: ${csv.length}`);
-
   csv.forEach((line) => {
     const [first, , , field] = line.split(',');
 
-    if (fieldMap.has(field)) fieldMap.get(field).push(first);
-    else fieldMap.set(field, [first]);
+    if (fieldsObj[field]) fieldsObj[field].push(first);
+    else fieldsObj[field] = [first];
   });
 
-  for (const [field, students] of fieldMap.entries()) {
-    console.log(`Number of students in ${field}: ${students.length}. List: ${students.join(', ')}`);
-  }
+  // This is required for task 3, but just clutters the logs in task 5.
+  //
+  // console.log(`Number of students: ${csv.length}`);
+  // Object.entries(data).forEach(([field, students]) => {
+  //   console.log(`Number of students in ${field}: ${students.length}. List: ${students.join(', ')}`);\
+  // })
+
+  return {
+    total: csv.length,
+    data: fieldsObj,
+  };
 }
 
 module.exports = countStudents;
