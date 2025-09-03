@@ -20,7 +20,7 @@ function countStudents(path) {
   console.log(`Number of students: ${csv.length}`);
 
   csv.forEach((line) => {
-    const [first, last, age, field] = line.split(',');
+    const [first, , , field] = line.split(',');
 
     if (fieldMap.has(field)) fieldMap.get(field).push(first);
     else fieldMap.set(field, [first]);
