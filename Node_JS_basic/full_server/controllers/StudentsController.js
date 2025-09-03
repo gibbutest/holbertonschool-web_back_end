@@ -9,21 +9,19 @@ export default class StudentsController {
    */
   static async getAllStudents(req, res) {
     res.setHeader('Content-Type', 'text/plain');
-    let string = 'This is the list of our students\n';
-
     try {
       const { total, data } = await readDatabase(database);
+      let string = 'This is the list of our students\n';
       string += `Number of students: ${total}\n`;
 
       Object.entries(data).forEach(([field, students]) => {
         string += `Number of students in ${field}: ${students.length}. List: ${students.join(', ')}\n`;
       });
-    } catch (error) {
-      res.statusCode = 500;
-      string += error.message;
-    }
 
-    res.end(string);
+      res.status(200).send(string);
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
   }
 
   /**
